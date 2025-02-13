@@ -1,3 +1,81 @@
+calc_ego_ens_df <- function(persnet_df) {
+  tryCatch({
+    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    #calculate ego's effective network size
+    vector_ego_ens <- sapply(gra_list, calc_node_ens)
+    return(vector_ego_ens)  
+  }, error = function(e) { #any error returns message not a persnet dataframe
+    stop("Error: not a persnet dataframe")  
+  })
+}
+
+
+calc_ego_constraint_df <- function(persnet_df) {
+  tryCatch({
+    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    #calculate ego's effective network size
+    vector_ego_constraint <- sapply(gra_list, calc_node_constraint)
+    return(vector_ego_constraint)  
+  }, error = function(e) { #any error returns message not a persnet dataframe
+    stop("Error: not a valid persnet dataframe")  
+  })
+}
+
+calc_ego_constraint_100_df <- function(persnet_df) {
+  tryCatch({
+    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    #calculate ego's effective network size
+    vector_ego_constraint <- sapply(gra_list, calc_node_constraint)
+    vector_ego_constraint_100 <- vector_ego_constraint*100
+    return(vector_ego_constraint_100)  
+  }, error = function(e) { #any error returns message not a persnet dataframe
+    stop("Error: not a valid persnet dataframe")  
+  })
+}
+
+calc_total_alters_df <- function(persnet_df) {
+  tryCatch({
+    vector_count_total_alters <- apply(persnet_df, 1, function(row) 
+      calc_total_alters_row(persnet_df %>% filter(record_id == row["record_id"])))
+    return(vector_count_total_alters)  
+  }, error = function(e) { #any error returns message not a persnet dataframe
+    stop("Error: not a valid persnet dataframe")  
+  })
+}
+
+calc_egoless_density_df <- function(persnet_df) {
+  tryCatch({
+    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    #calculate density without the ego
+    vector_egoless_density <- sapply(gra_list, calc_egoless_density)
+    return(vector_egoless_density)  
+  }, error = function(e) { #any error returns message not a persnet dataframe
+    stop("Error: not a valid persnet dataframe")  
+  })
+}
+
+calc_egoless_max_degree_df <- function(persnet_df) {
+  tryCatch({
+    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    #calculate max degree minus ego
+    vector_max_degree <- sapply(gra_list, calc_egoless_max_degree)
+    return(vector_max_degree)  
+  }, error = function(e) { #any error returns message not a persnet dataframe
+    stop("Error: not a valid persnet dataframe")  
+  })
+}
+
+calc_egoless_min_degree_df <- function(persnet_df) {
+  tryCatch({
+    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    #calculate max degree minus ego
+    vector_min_degree <- sapply(gra_list, calc_egoless_min_degree)
+    return(vector_min_degree)  
+  }, error = function(e) { #any error returns message not a persnet dataframe
+    stop("Error: not a valid persnet dataframe")  
+  })
+}
+
 extract_race_legacy <- function(persnet_row, race_position) {
   race_labels <- c("black", "white", "indigenous", "asian", "pacific_islander", "other", NA)
   #these specific race columns can be edited depending on names in persnet edition
