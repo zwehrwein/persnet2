@@ -105,8 +105,8 @@ extract_health_problems_legacy <- function(persnet_row, health_position) {
 }
 
 legacy_kin_prop_row <- function(persnet_row) {
-  return(prop_alters_relationship(persnet_row,"spouse")+
-           prop_alters_relationship(persnet_row,"family"))
+  return(calc_prop_alters_relationship(persnet_row,"spouse")+
+           calc_prop_alters_relationship(persnet_row,"family"))
 }
 
 legacy_sd_age_alters_row <- function(persnet_row) {
