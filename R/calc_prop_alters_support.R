@@ -41,7 +41,7 @@ calc_prop_alters_support <- function(persnet_row, support_type) {
   }
   
   # Convert row to a tidygraph object and check if the network is an isolate
-  tg_graph <- row_to_tidygraph(persnet_row)
+  tg_graph <- organize_row_to_tidygraph(persnet_row)
   if (vcount(tg_graph) == 1) {
     return(NA)
   }

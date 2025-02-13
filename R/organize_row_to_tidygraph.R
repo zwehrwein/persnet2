@@ -14,7 +14,7 @@
 #' @export
 #'
 #' @examples
-#' row_to_tidygraph(persnet_row)
+#' organize_row_to_tidygraph(persnet_row)
 organize_row_to_tidygraph <- function(df_row_input) {
   ##########
   # Function: Converts a single row of a personal network data frame into  

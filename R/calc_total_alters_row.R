@@ -27,7 +27,7 @@ calc_total_alters_row <- function(persnet_row) {
   }
   
   # Convert the row into a tidygraph object
-  tc_tidygraph <- row_to_tidygraph(persnet_row)
+  tc_tidygraph <- organize_row_to_tidygraph(persnet_row)
   
   # Extract unique alter names from the tidygraph, excluding the ego node
   unique_names_tidygra <- tc_tidygraph %>%

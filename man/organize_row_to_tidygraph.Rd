@@ -23,5 +23,5 @@ representing the network structure of ego and their alters.
 - Ensures undirected network representation.
 }
 \examples{
-row_to_tidygraph(persnet_row)
+organize_row_to_tidygraph(persnet_row)
 }
