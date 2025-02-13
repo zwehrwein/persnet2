@@ -1,6 +1,6 @@
 calc_ego_ens_df <- function(persnet_df) {
   tryCatch({
-    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    gra_list <- organize_list_tidygraphs(persnet_df)
     #calculate ego's effective network size
     vector_ego_ens <- sapply(gra_list, calc_node_ens)
     return(vector_ego_ens)  
@@ -9,10 +9,9 @@ calc_ego_ens_df <- function(persnet_df) {
   })
 }
 
-
 calc_ego_constraint_df <- function(persnet_df) {
   tryCatch({
-    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    gra_list <- organize_list_tidygraphs(persnet_df)
     #calculate ego's effective network size
     vector_ego_constraint <- sapply(gra_list, calc_node_constraint)
     return(vector_ego_constraint)  
@@ -23,7 +22,7 @@ calc_ego_constraint_df <- function(persnet_df) {
 
 calc_ego_constraint_100_df <- function(persnet_df) {
   tryCatch({
-    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    gra_list <- organize_list_tidygraphs(persnet_df)
     #calculate ego's effective network size
     vector_ego_constraint <- sapply(gra_list, calc_node_constraint)
     vector_ego_constraint_100 <- vector_ego_constraint*100
@@ -104,7 +103,6 @@ extract_health_problems_legacy <- function(persnet_row, health_position) {
     return(NA)
   }
 }
-
 
 legacy_kin_prop_row <- function(persnet_row) {
   return(prop_alters_relationship(persnet_row,"spouse")+
