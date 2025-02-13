@@ -13,7 +13,7 @@ organize_row_to_tidygraph(df_row_input)
 A tidygraph object representing the personal network.
 }
 \description{
-Converts a single row of a personal network data frame into a tidygraph object,
+Converts a single row of a personal network data frame into a tidygraph object, 
 representing the network structure of ego and their alters.
 }
 \details{
@@ -23,5 +23,5 @@ representing the network structure of ego and their alters.
 - Ensures undirected network representation.
 }
 \examples{
-organize_row_to_tidygraph(persnet_row)
+row_to_tidygraph(persnet_row)
 }
