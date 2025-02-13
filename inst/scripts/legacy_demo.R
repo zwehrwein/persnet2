@@ -118,8 +118,8 @@ legacy_sd_age_alters_row <- function(persnet_row) {
 legacy_weak_freq_prop_row <- function(persnet_row) {
   #proportion of alters who contact ego monthly or less frequently
   return(
-         round(  prop_alters_speak_monthly(persnet_row)+
-             prop_alters_speak_more_monthly(persnet_row)
+         round(  calc_prop_alters_freq_speak(persnet_row,"monthly")+
+             calc_prop_alters_freq_speak(persnet_row,"more_monthly")
          ,2)
   )
 }
@@ -127,8 +127,8 @@ legacy_weak_freq_prop_row <- function(persnet_row) {
 legacy_weak_dur_prop_row <- function(persnet_row) {
   #proportion of alters who contact ego monthly or less frequently
   return(
-    round(  prop_alters_less_than_3years(persnet_row)+
-              prop_alters_less_3_to_6years(persnet_row)
+    round(  calc_prop_alters_known_length(persnet_row,"less_than_3years")+
+              calc_prop_alters_known_length(persnet_row,"three_to_6years")
             ,2)
   )
 }
@@ -136,8 +136,8 @@ legacy_weak_dur_prop_row <- function(persnet_row) {
 legacy_far_dist_prop_row <- function(persnet_row) {
   #proportion of alters who live > 15 miles away
   return(
-    round(  prop_alters_16_50miles(persnet_row)+
-              prop_alters_more50miles(persnet_row)
+    round(  calc_prop_alters_distance_away(persnet_row,"16_50miles")+
+              calc_prop_alters_distance_away(persnet_row,"more50miles")
             ,2)
   )
 }
