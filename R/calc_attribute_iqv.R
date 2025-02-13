@@ -20,7 +20,7 @@ calc_attribute_iqv <- function(persnet_row, attribute = NULL) {
   #           a personal network.
   # Inputs:  
   #   persnet_row = A single row of a personal network data frame
-  #   attribute   = One of 'race', 'gender', 'educ', 'relationships' (family vs non-family),  
+  #   attribute   = One of 'gender', 'educ', 'relationships' (family vs non-family),  
   #                 or 'support' (types of support)
   # Outputs:  
   #   IQV value for the specified attribute
@@ -28,7 +28,7 @@ calc_attribute_iqv <- function(persnet_row, attribute = NULL) {
   
   # Define valid attributes for IQV calculation
   valid_attributes <- c(
-    "race",
+    #"race",
     "gender",
     "educ", 
     "relationships", 
@@ -37,16 +37,16 @@ calc_attribute_iqv <- function(persnet_row, attribute = NULL) {
   
   # Validate the attribute input
   if (is.null(attribute) || is.na(attribute) || !(attribute %in% valid_attributes)) {
-    stop("Error: Choose one of 'race', 'gender', 'educ', 'relationships' (family vs non-family),
+    stop("Error: Choose one of gender', 'educ', 'relationships' (family vs non-family),
     or 'support' (types of support)")
   }
   
   # Calculate IQV using Blau heterophily index and corresponding normalization factor
-  if (attribute == 'race') {
-    return(
-      calc_blau_alter_heterophily(persnet_row, 'race') / (1 - 1 / 5)
-    )
-  }
+  #if (attribute == 'race') {
+  #  return(
+  #    calc_blau_alter_heterophily(persnet_row, 'race') / (1 - 1 / 5)
+  #  )
+  #}
   if (attribute == 'gender') {
     return(
       calc_blau_alter_heterophily(persnet_row, 'gender') / (1 - 1 / 2)
@@ -57,14 +57,14 @@ calc_attribute_iqv <- function(persnet_row, attribute = NULL) {
       calc_blau_alter_heterophily(persnet_row, 'educ') / (1 - 1 / 4)
     )
   }
-  if (attribute == 'relationships') {
-    return(
-      calc_blau_alter_heterophily(persnet_row, 'relationships') / (1 - 1 / 6)
-    )
-  }
-  if (attribute == 'support') {
-    return(
-      calc_blau_alter_heterophily(persnet_row, 'support') / (1 - 1 / 5)
-    )
-  }
+  #if (attribute == 'relationships') {
+  #  return(
+  #    calc_blau_alter_heterophily(persnet_row, 'relationships') / (1 - 1 / 6)
+  #  )
+  #}
+  #if (attribute == 'support') {
+  #  return(
+  #    calc_blau_alter_heterophily(persnet_row, 'support') / (1 - 1 / 5)
+  #  )
+  #}
 }

@@ -74,10 +74,10 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
   
   # Calculate and return Blau heterophily index for education
   if (attribute == 'educ') {
-    prop_only_highschool <- prop_alters_only_high_school_edu(persnet_row)  
-    prop_some_college <- prop_alters_some_college_edu(persnet_row)  
-    prop_college_grad <- prop_alters_college_grad_edu(persnet_row)  
-    prop_dont_know_edu <- prop_alters_dont_know_educ(persnet_row)
+    prop_only_highschool <- calc_prop_alters_education_level(persnet_row,'only_high_school')  
+    prop_some_college <- calc_prop_alters_education_level(persnet_row,'some_college')  
+    prop_college_grad <- calc_prop_alters_education_level(persnet_row,'college_grad')  
+    prop_dont_know_edu <- calc_prop_alters_education_level(persnet_row,'dont_know')
     blau_index_educ <- 1 - sum(prop_only_highschool^2, prop_some_college^2, prop_college_grad^2, prop_dont_know_edu^2)
     return(blau_index_educ)                               
   }
@@ -108,11 +108,11 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
   # Calculate and return Blau heterophily index for distance
   if (attribute == 'distance') {
     blau_index_distance <- 1 - sum(
-      prop_alters_same_house(persnet_row)^2,
-      prop_alters_1_5miles(persnet_row)^2,
-      prop_alters_6_15miles(persnet_row)^2,
-      prop_alters_16_50miles(persnet_row)^2,
-      prop_alters_more50miles(persnet_row)^2
+      calc_prop_alters_distance_away(persnet_row,"same_house")^2,
+      calc_prop_alters_distance_away(persnet_row,"1_5miles")^2,
+      calc_prop_alters_distance_away(persnet_row,"6_15miles")^2,
+      calc_prop_alters_distance_away(persnet_row,"16_50miles")^2,
+      calc_prop_alters_distance_away(persnet_row,"more50miles")^2
     )
     return(blau_index_distance)
   }
@@ -120,11 +120,11 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
   # Calculate and return Blau heterophily index for frequency of speaking
   if (attribute == 'speak') {
     blau_index_speak <- 1 - sum(
-      prop_alters_speak_daily(persnet_row)^2,
-      prop_alters_speak_weekly(persnet_row)^2,
-      prop_alters_speak_monthly(persnet_row)^2,
-      prop_alters_speak_more_monthly(persnet_row)^2,
-      prop_alters_speak_dont_know(persnet_row)^2
+      calc_prop_alters_freq_speak(persnet_row,'daily')^2,
+      calc_prop_alters_freq_speak(persnet_row,'weekly')^2,
+      calc_prop_alters_freq_speak(persnet_row,'monthly')^2,
+      calc_prop_alters_freq_speak(persnet_row,'more_monthly')^2,
+      calc_prop_alters_freq_speak(persnet_row,'dont_know')^2
     )
     return(blau_index_speak)
   }
@@ -132,10 +132,10 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
   # Calculate and return Blau heterophily index for length of knowing ego
   if (attribute == 'length') {
     blau_index_length <- 1 - sum(
-      prop_alters_less_than_3years(persnet_row)^2,
-      prop_alters_three_to_6years(persnet_row)^2,
-      prop_alters_more_than_6years(persnet_row)^2,
-      prop_alters_known_unknown(persnet_row)^2
+      calc_prop_alters_known_length(persnet_row,"less_than_3years")^2,
+      calc_prop_alters_known_length(persnet_row,"three_to_6years")^2,
+      calc_prop_alters_known_length(persnet_row,"more_than_6years")^2,
+      calc_prop_alters_known_length(persnet_row,"unknown")^2
     )
     return(blau_index_length)
   }
