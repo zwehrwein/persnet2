@@ -45,7 +45,7 @@ calc_total_alters_df <- function(persnet_df) {
 
 calc_egoless_density_df <- function(persnet_df) {
   tryCatch({
-    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    gra_list <- organize_list_tidygraphs(persnet_df)
     #calculate density without the ego
     vector_egoless_density <- sapply(gra_list, calc_egoless_density)
     return(vector_egoless_density)  
@@ -56,7 +56,7 @@ calc_egoless_density_df <- function(persnet_df) {
 
 calc_egoless_max_degree_df <- function(persnet_df) {
   tryCatch({
-    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    gra_list <- organize_list_tidygraphs(persnet_df)
     #calculate max degree minus ego
     vector_max_degree <- sapply(gra_list, calc_egoless_max_degree)
     return(vector_max_degree)  
@@ -67,7 +67,7 @@ calc_egoless_max_degree_df <- function(persnet_df) {
 
 calc_egoless_min_degree_df <- function(persnet_df) {
   tryCatch({
-    gra_list <- funct_organize_list_tidygraphs(persnet_df)
+    gra_list <- organize_list_tidygraphs(persnet_df)
     #calculate max degree minus ego
     vector_min_degree <- sapply(gra_list, calc_egoless_min_degree)
     return(vector_min_degree)  
