@@ -23,7 +23,7 @@ organize_list_tidygraphs <- function(persnet_df) {
     mutate(index = 1:n()) %>%  
     dplyr::group_split(index)  # Split by the index
   
-  # Convert each row into a tidygraph object using row_to_tidygraph()
+  # Convert each row into a tidygraph object using organize_row_to_tidygraph()
   tidygraph_list <- lapply(df_as_list, organize_row_to_tidygraph)
   
   return(tidygraph_list)
