@@ -145,7 +145,7 @@ build_clean_df <- function(df_input) {
       NA_real_
     })),
     weak_dur_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
-      prop_alters_know_less6years_row(df_input[.x, , drop = FALSE])
+      weak_dur_prop(df_input[.x, , drop = FALSE])
     }, error = function(e) {
       warning(sprintf("Row %s: Unable to compute weak_dur_prop", .x))
       NA_real_
