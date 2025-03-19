@@ -9,9 +9,7 @@
 #' @importFrom magrittr %>%
 #' @export
 #'
-#' @examples
-#' # Assuming persnet_df is your personal network dataframe:
-#' vector_egoless_density <- calc_egoless_density_df(persnet_df)
+
 calc_egoless_density_df <- function(persnet_df) {
   tryCatch({
     # Organize a list of tidygraphs from the persnet dataframe

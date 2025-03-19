@@ -21,6 +21,7 @@ calc_egoless_max_degree <- function(tg_graph) {
   
   tryCatch({
     # Remove ego
+    
     egoless_graph <- remove_ego_from_igraph(tg_graph)
     
     # Check if the graph is empty, if so return 0

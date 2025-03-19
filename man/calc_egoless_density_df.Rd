@@ -16,7 +16,3 @@ A vector containing the egoless density for each network.
 Computes the density of each personal network after removing the ego node from each network 
 contained in a persnet dataframe.
 }
-\examples{
-# Assuming persnet_df is your personal network dataframe:
-vector_egoless_density <- calc_egoless_density_df(persnet_df)
-}

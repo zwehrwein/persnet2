@@ -7,11 +7,10 @@
 #' @param persnet_row A single row of a persnet dataframe.
 #'
 #' @return A numeric value representing the proportion of alters who have known the ego for less than 6 years.
+#' @importFrom magrittr %>%
 #' @export
 #'
-#' @examples
-#' # Assuming persnet_row is a row from your persnet dataframe:
-#' prop_less6years <- prop_alters_know_less6years_row(persnet_row)
+
 weak_dur_prop_row <- function(persnet_row) {
   # Proportion of alters who have known the ego for less than 6 years
   return(
