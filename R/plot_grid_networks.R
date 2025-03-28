@@ -9,12 +9,12 @@
 #' - **Alters** are represented with grey points.
 #'
 #' The function allows customization of the grid:
-#' - **number_cols**: Specifies the number of columns in the grid (default = 5).
+#' - **number_cols**: Specifies the number of columns in the grid (default = ceiling of the square root of the total number of plots to make).
 #' - **nets_per_plot**: Defines how many networks are displayed per plot (default = 20).
 #'
 #' @param list_tidygra A list of tidygraph objects.
-#' @param number_cols Number of columns in the grid (default = 5).
-#' @param nets_per_plot Number of networks per plot (default = 20).
+#' @param number_cols Number of columns in the grid (default = ceiling of the square root of the total number of plots).
+#' @param nets_per_plot Number of networks per plot (default = 25 to ensure clarity).
 #'
 #' @return A combined grid plot of personal networks.
 #' @export
@@ -29,7 +29,7 @@ plot_grid_networks <- function(list_tidygra, number_cols = NULL, nets_per_plot =
   #           objects, displaying multiple networks at once.
   # Inputs: 
   #   list_tidygra   = A list of tidygraph objects
-  #   number_cols    = Number of columns in the grid (default = 5)
+  #   number_cols    = Number of columns in the grid (default = ceiling of the square root of the total)
   #   nets_per_plot  = Number of networks per plot (default = 20)
   # Outputs: A combined grid plot of personal networks
   ##########
@@ -38,8 +38,8 @@ plot_grid_networks <- function(list_tidygra, number_cols = NULL, nets_per_plot =
   if (!is.list(list_tidygra)) stop("Input must be a list of tidygraph objects.")
   
   # Set default values if parameters are NULL
-  if (is.null(number_cols)) number_cols <- 5
-  if (is.null(nets_per_plot)) nets_per_plot <- 20
+  if (is.null(number_cols)) number_cols <- ceiling(sqrt(length(list_tidygra)))
+  if (is.null(nets_per_plot)) nets_per_plot <- 25
   
   # Split list of networks into chunks of size 'nets_per_plot'
   chunks_nets_visual <- split(list_tidygra, ceiling(seq_along(list_tidygra) / nets_per_plot))
