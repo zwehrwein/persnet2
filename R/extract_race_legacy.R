@@ -14,9 +14,5 @@ extract_race_legacy <- function(persnet_row, race_position) {
   # identify which race columns are marked as 1
   selected_races <- race_labels[which(persnet_row[race_columns] == 1)]
   #select which item in list of race columns == 1
-  if (length(selected_races) >= race_position) {
-    return(selected_races[race_position])
-  } else {
-    return(NA)
-  }
+  return(selected_races[race_position])
 }
