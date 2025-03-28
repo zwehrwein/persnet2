@@ -13,9 +13,8 @@ df_clean = tibble::tibble(
 record_id = df_input$record_id,
 age = df_input$age,
 
-sex = factor(df1$sex, levels = c(0, 1, 2), labels = c("woman", "men", "other"))
+sex = factor(df_input$sex, levels = c(0, 1, 2), labels = c("woman", "men", "other")),
 
-# demographics
 race1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
 extract_race_legacy(df_input[.x, , drop = FALSE], race_numeric = 1)
 }, error = function(e) {
@@ -31,54 +30,54 @@ NA_character_
 
 # Education: convert and assign
 df_input$edu <- factor(df_input$edu, 
-levels = c(1, 2, 3, 4, 5, 6, 88),
-labels = c("some_high_school", "high_school_grad",
-        "some_college", "associate_degree", 
-        "bachelor_degree", "graduate_degree", 
-        "no_answer"))
-education <- df_input$edu
+  levels = c(1, 2, 3, 4, 5, 6, 88),
+  labels = c("some_high_school", "high_school_grad",
+          "some_college", "associate_degree", 
+          "bachelor_degree", "graduate_degree", 
+          "no_answer")),
+education <- df_input$edu,
 
 # Zip: convert to character
-zip <- as.character(df_input$zip)
+zip <- as.character(df_input$zip),
 
 # Employment: convert and assign
 df_input$employment <- factor(df_input$employment, 
-levels = c(1, 2, 3, 4, 5, 6, 7, 0),
-labels = c("employed_for_wages", "self_employed",
-         "out_of_work_looking_for_work", "student", 
-         "retired", "unable_to_work", 
-         "no_answer", "out_of_work_not_looking_for_work"))
-employment <- df_input$employment
+  levels = c(1, 2, 3, 4, 5, 6, 7, 0),
+  labels = c("employed_for_wages", "self_employed",
+           "out_of_work_looking_for_work", "student", 
+           "retired", "unable_to_work", 
+           "no_answer", "out_of_work_not_looking_for_work")),
+employment <- df_input$employment,
 
 # Occupation: convert and assign
 df_input$occupation <- factor(df_input$occupation, 
-levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "77"),
-labels = c("executive_manager", "sales_or_clerical_worker",
-           "mechanic_electrician_skilled_worker", 
-           "machine_operator_inspector_bus_cab_driver",
-           "service_worker", "professional", 
-           "business_owner", "laborer_unskilled_worker",
-           "farming", "military", "other"))
-occupation <- df_input$occupation
+  levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "77"),
+  labels = c("executive_manager", "sales_or_clerical_worker",
+             "mechanic_electrician_skilled_worker", 
+             "machine_operator_inspector_bus_cab_driver",
+             "service_worker", "professional", 
+             "business_owner", "laborer_unskilled_worker",
+             "farming", "military", "other")),
+occupation <- df_input$occupation,
 
 # Income: convert and assign
 df_input$income <- factor(df_input$income, 
-levels = c("1", "2", "3", "4", "5"),
-labels = c("less_than_5000", "5000_to_49000", "50000_to_169000",
-           "170000_to_499000", "more_than_500000"))
-income <- df_input$income
+  levels = c("1", "2", "3", "4", "5"),
+  labels = c("less_than_5000", "5000_to_49000", "50000_to_169000",
+             "170000_to_499000", "more_than_500000")),
+income <- df_input$income,
 
 # Married: convert and assign
 df_input$married <- factor(df_input$married, 
-levels = c(0, 1),
-labels = c("not_married", "married"))
-married <- df_input$married
+  levels = c(0, 1),
+  labels = c("not_married", "married")),
+married <- df_input$married,
 
 # Live Alone: convert and assign
 df_input$live_alone <- factor(df_input$live_alone, 
-levels = c(0, 1),
-labels = c("no", "yes"))
-live_alone <- df_input$live_alone
+  levels = c(0, 1),
+  labels = c("no", "yes")),
+live_alone <- df_input$live_alone,
 
 # Household Number: simply assign
 household_number <- df_input$household_number
@@ -86,27 +85,27 @@ household_number <- df_input$household_number
 # Health behaviors:
 # Alcohol: convert and assign
 df_input$alcohol <- factor(df_input$alcohol, 
-levels = c(1, 0, 9),
-labels = c("yes", "no", "does_not_drink_heavily"))
-ego_alcohol <- df_input$alcohol
+  levels = c(1, 0, 9),
+  labels = c("yes", "no", "does_not_drink_heavily")),
+ego_alcohol <- df_input$alcohol,
 
 # Smoke: convert and assign
 df_input$smoke <- factor(df_input$smoke, 
-levels = c(1, 0, 9),
-labels = c("yes", "no", "does_not_smoke"))
-ego_smoke <- df_input$smoke
+  levels = c(1, 0, 9),
+  labels = c("yes", "no", "does_not_smoke")),
+ego_smoke <- df_input$smoke,
 
 # Exercise: convert and assign
 df_input$exercise <- factor(df_input$exercise, 
-levels = c(1, 0),
-labels = c("yes", "no"))
-ego_exercise <- df_input$exercise
+  levels = c(1, 0),
+  labels = c("yes", "no")),
+ego_exercise <- df_input$exercise,
 
 # Diet: convert and assign
 df_input$diet <- factor(df_input$diet, 
-levels = c(1, 0),
-labels = c("yes", "no"))
-ego_diet <- df_input$diet
+  levels = c(1, 0),
+  labels = c("yes", "no")),
+ego_diet <- df_input$diet,
 
 # health problems
 health1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
