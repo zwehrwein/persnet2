@@ -17,7 +17,3 @@ Computes the proportion of alters who have known the ego for less than 6 years i
 This is done by summing the proportions of alters who have known the ego for "less_than_3years" and 
 "three_to_6years", and then rounding the result to two decimal places.
 }
-\examples{
-# Assuming persnet_row is a row from your persnet dataframe:
-prop_less6years <- prop_alters_know_less6years_row(persnet_row)
-}

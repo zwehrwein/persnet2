@@ -9,9 +9,9 @@ plot_grid_networks(list_tidygra, number_cols = NULL, nets_per_plot = NULL)
 \arguments{
 \item{list_tidygra}{A list of tidygraph objects.}
 
-\item{number_cols}{Number of columns in the grid (default = 5).}
+\item{number_cols}{Number of columns in the grid (default = ceiling of the square root of the total number of plots).}
 
-\item{nets_per_plot}{Number of networks per plot (default = 20).}
+\item{nets_per_plot}{Number of networks per plot (default = 25 to ensure clarity).}
 }
 \value{
 A combined grid plot of personal networks.
@@ -27,7 +27,7 @@ Each individual network graph distinguishes between strong and weak ties and hig
 - **Alters** are represented with grey points.
 
 The function allows customization of the grid:
-- **number_cols**: Specifies the number of columns in the grid (default = 5).
+- **number_cols**: Specifies the number of columns in the grid (default = ceiling of the square root of the total number of plots to make).
 - **nets_per_plot**: Defines how many networks are displayed per plot (default = 20).
 }
 \examples{

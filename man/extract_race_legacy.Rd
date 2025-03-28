@@ -7,11 +7,13 @@
 extract_race_legacy(persnet_row, race_position)
 }
 \arguments{
-\item{persnet_df}{A dataframe containing personal network data.}
+\item{persnet_row}{A dataframe containing personal network data.}
+
+\item{race_position}{A numeric indicating whether to return the 1st, 2nd, 3rd, or 4th race listed.}
 }
 \value{
-A string indicating the primary racial identification of the ego.
+A string indicating the associated racial identification by the ego.
 }
 \description{
-Returns the race of the ego from the demographics questions
+Return the race of the ego from the demographics questions
 }
