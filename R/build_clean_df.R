@@ -10,59 +10,109 @@
 #'
 build_clean_df = function(df_input) {
 
-#create factor variables here
+#create factor variables here with a try except if the particular variable name is missing
 
-df_input$edu <- factor(df_input$edu, 
-  levels = c(1, 2, 3, 4, 5, 6, 88),
-  labels = c("some_high_school", "high_school_grad",
-          "some_college", "associate_degree", 
-          "bachelor_degree", "graduate_degree", 
-          "no_answer"))
+df_input$edu <- tryCatch({
+  factor(df_input$edu, 
+         levels = c(1, 2, 3, 4, 5, 6, 88),
+         labels = c("some_high_school", "high_school_grad",
+                    "some_college", "associate_degree", 
+                    "bachelor_degree", "graduate_degree", 
+                    "no_answer"))
+}, error = function(e) {
+  warning("Error converting edu: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$edu)))
+})
 
-df_input$employment <- factor(df_input$employment, 
-  levels = c(1, 2, 3, 4, 5, 6, 7, 0),
-  labels = c("employed_for_wages", "self_employed",
-           "out_of_work_looking_for_work", "student", 
-           "retired", "unable_to_work", 
-           "no_answer", "out_of_work_not_looking_for_work"))
+df_input$employment <- tryCatch({
+  factor(df_input$employment, 
+         levels = c(1, 2, 3, 4, 5, 6, 7, 0),
+         labels = c("employed_for_wages", "self_employed",
+                    "out_of_work_looking_for_work", "student", 
+                    "retired", "unable_to_work", 
+                    "no_answer", "out_of_work_not_looking_for_work"))
+}, error = function(e) {
+  warning("Error converting employment: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$employment)))
+})
 
-df_input$occupation <- factor(df_input$occupation, 
-  levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "77"),
-  labels = c("executive_manager", "sales_or_clerical_worker",
-             "mechanic_electrician_skilled_worker", 
-             "machine_operator_inspector_bus_cab_driver",
-             "service_worker", "professional", 
-             "business_owner", "laborer_unskilled_worker",
-             "farming", "military", "other"))
+df_input$occupation <- tryCatch({
+  factor(df_input$occupation, 
+         levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "77"),
+         labels = c("executive_manager", "sales_or_clerical_worker",
+                    "mechanic_electrician_skilled_worker", 
+                    "machine_operator_inspector_bus_cab_driver",
+                    "service_worker", "professional", 
+                    "business_owner", "laborer_unskilled_worker",
+                    "farming", "military", "other"))
+}, error = function(e) {
+  warning("Error converting occupation: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$occupation)))
+})
 
-df_input$income <- factor(df_input$income, 
-  levels = c("1", "2", "3", "4", "5"),
-  labels = c("less_than_5000", "5000_to_49000", "50000_to_169000",
-             "170000_to_499000", "more_than_500000"))
+df_input$income <- tryCatch({
+  factor(df_input$income, 
+         levels = c("1", "2", "3", "4", "5"),
+         labels = c("less_than_5000", "5000_to_49000", "50000_to_169000",
+                    "170000_to_499000", "more_than_500000"))
+}, error = function(e) {
+  warning("Error converting income: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$income)))
+})
 
-df_input$live_alone <- factor(df_input$live_alone, 
-  levels = c(0, 1),
-  labels = c("no", "yes"))
+df_input$live_alone <- tryCatch({
+  factor(df_input$live_alone, 
+         levels = c(0, 1),
+         labels = c("no", "yes"))
+}, error = function(e) {
+  warning("Error converting live_alone: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$live_alone)))
+})
 
-df_input$married <- factor(df_input$married, 
-  levels = c(0, 1),
-  labels = c("not_married", "married"))
+df_input$married <- tryCatch({
+  factor(df_input$married, 
+         levels = c(0, 1),
+         labels = c("not_married", "married"))
+}, error = function(e) {
+  warning("Error converting married: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$married)))
+})
 
-df_input$alcohol <- factor(df_input$alcohol, 
-  levels = c(1, 0, 9),
-  labels = c("yes", "no", "does_not_drink_heavily"))
+df_input$alcohol <- tryCatch({
+  factor(df_input$alcohol, 
+         levels = c(1, 0, 9),
+         labels = c("yes", "no", "does_not_drink_heavily"))
+}, error = function(e) {
+  warning("Error converting alcohol: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$alcohol)))
+})
 
-df_input$smoke <- factor(df_input$smoke, 
-  levels = c(1, 0, 9),
-  labels = c("yes", "no", "does_not_smoke"))
+df_input$smoke <- tryCatch({
+  factor(df_input$smoke, 
+         levels = c(1, 0, 9),
+         labels = c("yes", "no", "does_not_smoke"))
+}, error = function(e) {
+  warning("Error converting smoke: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$smoke)))
+})
 
-df_input$exercise <- factor(df_input$exercise, 
-  levels = c(1, 0),
-  labels = c("yes", "no"))
+df_input$exercise <- tryCatch({
+  factor(df_input$exercise, 
+         levels = c(1, 0),
+         labels = c("yes", "no"))
+}, error = function(e) {
+  warning("Error converting exercise: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$exercise)))
+})
 
-df_input$diet <- factor(df_input$diet, 
-  levels = c(1, 0),
-  labels = c("yes", "no"))
+df_input$diet <- tryCatch({
+  factor(df_input$diet, 
+         levels = c(1, 0),
+         labels = c("yes", "no"))
+}, error = function(e) {
+  warning("Error converting diet: ", conditionMessage(e))
+  factor(rep(NA, length(df_input$diet)))
+})
 
 #build output df here
 df_clean = tibble::tibble(
