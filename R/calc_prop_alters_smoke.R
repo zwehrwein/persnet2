@@ -32,8 +32,9 @@ calc_prop_alters_smoke <- function(persnet_row) {
   smoke_cols <- persnet_row %>% dplyr::select(name1smoke:name15smoke)
   
   # Calculate and return the proportion of alters who do smoke
-  return(
-    sum(length(which(smoke_cols == 0)),length(which(smoke_cols == 1))) /
+  prop_smoke_value <- sum(length(which(smoke_cols == 0)),length(which(smoke_cols == 1))) /
     sum(persnet_row %>% dplyr::select(tie1:tie15) != 0, na.rm = TRUE)
+  return(
+    round(prop_smoke_value,2)
   )
 }
