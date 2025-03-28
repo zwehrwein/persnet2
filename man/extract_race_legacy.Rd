@@ -4,12 +4,12 @@
 \alias{extract_race_legacy}
 \title{Return the race of the ego from the demographics questions}
 \usage{
-extract_race_legacy(persnet_row, race_position)
+extract_race_legacy(persnet_row, race_numeric)
 }
 \arguments{
 \item{persnet_row}{A dataframe containing personal network data.}
 
-\item{race_position}{A numeric indicating whether to return the 1st, 2nd, 3rd, or 4th race listed.}
+\item{race_numeric}{A numeric indicating whether to return the 1st, 2nd, 3rd, or 4th race listed.}
 }
 \value{
 A string indicating the associated racial identification by the ego.
