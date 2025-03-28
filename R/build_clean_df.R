@@ -166,47 +166,52 @@ df_input$diet <- tryCatch({
 
 #build output df here
 df_clean = tibble::tibble(
-record_id = df_input$record_id,
-age = df_input$age,
-
-sex = factor(df_input$sex, levels = c(0, 1, 2), labels = c("woman", "men", "other")),
-
-race1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
-extract_race_legacy(df_input[.x, , drop = FALSE], race_numeric = 1)
-}, error = function(e) {
-warning(sprintf("Row %s: Unable to compute race1", .x))
-NA_character_
-})),
-race2 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
-extract_race_legacy(df_input[.x, , drop = FALSE], race_numeric = 2)
-}, error = function(e) {
-warning(sprintf("Row %s: Unable to compute race2", .x))
-NA_character_
-})),
-
-education = df_input$edu,
-
-zip = as.character(df_input$zip),
-
-employment = df_input$employment,
-
-occupation = df_input$occupation,
-
-income = df_input$income,
-
-married = df_input$married,
-
-live_alone = df_input$live_alone,
-
-household_number = df_input$household_number,
-
-ego_alcohol = df_input$alcohol,
-
-ego_smoke = df_input$smoke,
-
-ego_exercise = df_input$exercise,
-
-ego_healty_diet = df_input$diet,
+  record_id = if ("record_id" %in% names(df_input)) df_input$record_id else rep(NA, nrow(df_input)),
+  age       = if ("age" %in% names(df_input)) df_input$age else rep(NA, nrow(df_input)),
+  
+  sex = if ("sex" %in% names(df_input)) {
+    factor(df_input$sex, levels = c(0, 1, 2), labels = c("woman", "men", "other"))
+  } else {
+    rep(NA, nrow(df_input))
+  },
+  
+  race1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
+    extract_race_legacy(df_input[.x, , drop = FALSE], race_numeric = 1)
+  }, error = function(e) {
+    warning(sprintf("Row %s: Unable to compute race1", .x))
+    NA_character_
+  })),
+  
+  race2 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
+    extract_race_legacy(df_input[.x, , drop = FALSE], race_numeric = 2)
+  }, error = function(e) {
+    warning(sprintf("Row %s: Unable to compute race2", .x))
+    NA_character_
+  })),
+  
+  education = if ("edu" %in% names(df_input)) df_input$edu else rep(NA, nrow(df_input)),
+  
+  zip = if ("zip" %in% names(df_input)) as.character(df_input$zip) else rep(NA, nrow(df_input)),
+  
+  employment = if ("employment" %in% names(df_input)) df_input$employment else rep(NA, nrow(df_input)),
+  
+  occupation = if ("occupation" %in% names(df_input)) df_input$occupation else rep(NA, nrow(df_input)),
+  
+  income = if ("income" %in% names(df_input)) df_input$income else rep(NA, nrow(df_input)),
+  
+  married = if ("married" %in% names(df_input)) df_input$married else rep(NA, nrow(df_input)),
+  
+  live_alone = if ("live_alone" %in% names(df_input)) df_input$live_alone else rep(NA, nrow(df_input)),
+  
+  household_number = if ("household_number" %in% names(df_input)) df_input$household_number else rep(NA, nrow(df_input)),
+  
+  ego_alcohol = if ("alcohol" %in% names(df_input)) df_input$alcohol else rep(NA, nrow(df_input)),
+  
+  ego_smoke = if ("smoke" %in% names(df_input)) df_input$smoke else rep(NA, nrow(df_input)),
+  
+  ego_exercise = if ("exercise" %in% names(df_input)) df_input$exercise else rep(NA, nrow(df_input)),
+  
+  ego_healty_diet = if ("diet" %in% names(df_input)) df_input$diet else rep(NA, nrow(df_input))
 
 # health problems
 health_problems1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
