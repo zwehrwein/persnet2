@@ -93,5 +93,5 @@ calc_node_ens <- function(tidygra, node_index = NULL) {
     effective_size_result <- effective_size_result + (1 - redundancy_sum)
   }
   
-  return(round(effective_size_result),2) 
+  return(round(effective_size_result,2)) 
 }

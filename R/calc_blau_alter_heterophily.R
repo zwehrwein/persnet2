@@ -46,7 +46,7 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
     prop_men <- sum(gender_cols, na.rm = TRUE) / sum(persnet_row %>% dplyr::select(tie1:tie15) != 0, na.rm = TRUE)
     prop_women <- length(which(gender_cols == 0)) / sum(persnet_row %>% dplyr::select(tie1:tie15) != 0, na.rm = TRUE)
     blau_index_gender <- 1 - (prop_men^2 + prop_women^2)
-    return(round(blau_index_gender),2)                               
+    return(round(blau_index_gender,2))                               
   }
   
   # Calculate and return Blau heterophily index for race; commented out as by default
@@ -65,7 +65,7 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
                                prop_pacific_islanders^2,
                                prop_unknown^2
                                )
-    return(round(blau_index_race),2)                               
+    return(round(blau_index_race,2))                               
   }
   
   # Calculate and return Blau heterophily index for education
@@ -75,7 +75,7 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
     prop_college_grad <- calc_prop_alters_education_level(persnet_row,'college_grad')  
     prop_dont_know_edu <- calc_prop_alters_education_level(persnet_row,'dont_know')
     blau_index_educ <- 1 - sum(prop_only_highschool^2, prop_some_college^2, prop_college_grad^2, prop_dont_know_edu^2)
-    return(round(blau_index_educ),2)                               
+    return(round(blau_index_educ,2))                               
   }
   
   # Blau heterophily assumes mutually exclusive categories,
@@ -110,7 +110,7 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
       calc_prop_alters_distance_away(persnet_row,"16_50miles")^2,
       calc_prop_alters_distance_away(persnet_row,"more50miles")^2
     )
-    return(round(blau_index_distance),2)
+    return(round(blau_index_distance,2))
   }
 
   # Calculate and return Blau heterophily index for frequency of speaking
@@ -122,7 +122,7 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
       calc_prop_alters_freq_speak(persnet_row,'more_monthly')^2,
       calc_prop_alters_freq_speak(persnet_row,'dont_know')^2
     )
-    return(round(blau_index_speak),2)
+    return(round(blau_index_speak,2))
   }
   
   # Calculate and return Blau heterophily index for length of knowing ego
@@ -133,6 +133,6 @@ calc_blau_alter_heterophily <- function(persnet_row, attribute = NULL) {
       calc_prop_alters_known_length(persnet_row,"more_than_6years")^2,
       calc_prop_alters_known_length(persnet_row,"unknown")^2
     )
-    return(round(blau_index_length),2)
+    return(round(blau_index_length,2))
   }
 }
