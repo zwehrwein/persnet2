@@ -38,7 +38,7 @@ df_input$edu <- factor(df_input$edu,
 education <- df_input$edu,
 
 # Zip: convert to character
-zip <- as.character(df_input$zip),
+zip = as.character(df_input$zip),
 
 # Employment: convert and assign
 df_input$employment <- factor(df_input$employment, 
@@ -58,54 +58,54 @@ df_input$occupation <- factor(df_input$occupation,
              "service_worker", "professional", 
              "business_owner", "laborer_unskilled_worker",
              "farming", "military", "other")),
-occupation <- df_input$occupation,
+occupation = df_input$occupation,
 
 # Income: convert and assign
 df_input$income <- factor(df_input$income, 
   levels = c("1", "2", "3", "4", "5"),
   labels = c("less_than_5000", "5000_to_49000", "50000_to_169000",
              "170000_to_499000", "more_than_500000")),
-income <- df_input$income,
+income = df_input$income,
 
 # Married: convert and assign
 df_input$married <- factor(df_input$married, 
   levels = c(0, 1),
   labels = c("not_married", "married")),
-married <- df_input$married,
+married = df_input$married,
 
 # Live Alone: convert and assign
 df_input$live_alone <- factor(df_input$live_alone, 
   levels = c(0, 1),
   labels = c("no", "yes")),
-live_alone <- df_input$live_alone,
+live_alone = df_input$live_alone,
 
 # Household Number: simply assign
-household_number <- df_input$household_number
+household_number = df_input$household_number,
 
 # Health behaviors:
 # Alcohol: convert and assign
 df_input$alcohol <- factor(df_input$alcohol, 
   levels = c(1, 0, 9),
   labels = c("yes", "no", "does_not_drink_heavily")),
-ego_alcohol <- df_input$alcohol,
+ego_alcohol = df_input$alcohol,
 
 # Smoke: convert and assign
 df_input$smoke <- factor(df_input$smoke, 
   levels = c(1, 0, 9),
   labels = c("yes", "no", "does_not_smoke")),
-ego_smoke <- df_input$smoke,
+ego_smoke = df_input$smoke,
 
 # Exercise: convert and assign
 df_input$exercise <- factor(df_input$exercise, 
   levels = c(1, 0),
   labels = c("yes", "no")),
-ego_exercise <- df_input$exercise,
+ego_exercise = df_input$exercise,
 
 # Diet: convert and assign
 df_input$diet <- factor(df_input$diet, 
   levels = c(1, 0),
   labels = c("yes", "no")),
-ego_diet <- df_input$diet,
+ego_diet = df_input$diet,
 
 # health problems
 health1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
