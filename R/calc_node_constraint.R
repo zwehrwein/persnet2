@@ -92,5 +92,5 @@ calc_node_constraint <- function(tidygra, node_index = NULL) {
     constraint <- constraint + (matrix_proportions[ego_index, j] + redundancy)^2
   }
   
-  return(constraint)
+  return(round(constraint,2))
 }
