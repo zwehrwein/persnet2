@@ -12,35 +12,81 @@ build_clean_df <- function(df_input) {
   df_clean <- tibble::tibble(
     record_id = df_input$record_id,
     age = df_input$age,
+
+    df_input$sex <- factor(df_input$sex, levels = c("0", "1", "2"))
+    levels(df_input$sex) <- c("woman","men","other")
     sex = df_input$sex,  # n.b. male == 1
 
     # demographics
     race1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
-      extract_race_legacy(df_input[.x, , drop = FALSE], race_position = 1)
+      extract_race_legacy(df_input[.x, , drop = FALSE], race_numeric = 1)
     }, error = function(e) {
       warning(sprintf("Row %s: Unable to compute race1", .x))
       NA_character_
     })),
     race2 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
-      extract_race_legacy(df_input[.x, , drop = FALSE], race_position = 2)
+      extract_race_legacy(df_input[.x, , drop = FALSE], race_numeric = 2)
     }, error = function(e) {
       warning(sprintf("Row %s: Unable to compute race2", .x))
       NA_character_
     })),
 
+    df_input$edu <- factor(df_input$edu, levels = c(1, 2, 3, 4, 5, 6, 88))
+    df_input$edu <- factor(df_input$edu,
+                       levels = c("some_high_school", "high_school_grad",
+                                  "some_college", "assocaiate_degree", 
+                                  "bachlor_degree", "graduate_degree", 
+                                  "no_answer"))
     education = df_input$edu,
-    zip = df_input$zip,
+    
+    zip = as.character(df_input$zip),
+    
+    df_input$employment <- factor(df_input$employment, levels = c(1,2,3,4,5,6,7,0))
+    df_input$employment <- factor(df_input$employment,
+                       levels = c("employed_for_wages", "self_employed",
+                                  "out_of_work_looking_for_work", "student", 
+                                  "retired", "unable_to_work", 
+                                  "no_answer","out_of_work_not_looking_for_work"))
     employment = df_input$employment,
+    
+    df_input$occupation <- factor(df_input$occupation, levels = c("1", "2", 
+    "3", "4", "5", "6", "7", "8", "9", "10", "77"))
+    levels(df_input$occupation) <- c("executive_manager","sales_or_clerical_worker",
+    "mechanic_electrician_skilled_worker", "machine_operator_inspector_bus_cab_driver",
+    "service_worker","professional","business_owner","laborer_unskilled_worker","farming",
+    "military","other")
     occupation = df_input$occupation,
+
+    df_input$income <- factor(df_input$income, levels = c("1", "2", "3", "4", "5"))
+    levels(df_input$income) <- c("less_than_5000","5000_to_49000","50000_to_169000",
+      "170000_to_499000","more_than_500000")
     income = df_input$income,
+
+    df_input$married <- factor(df_input$married, levels = c(0, 1))
+    levels(df_input$married) <- c("not_married", "married")
     married = df_input$married,
+    
+    df_input$live_alone <- factor(df_input$live_alone, levels = c(0, 1))
+    levels(df_input$live_alone) <- c("no", "yes")
     live_alone = df_input$live_alone,
+
     household_number = df_input$household_number,
 
     # health behaviors
+    df_input$alcohol <- factor(df_input$alcohol, levels = c(1, 0, 9))
+    levels(df_input$alcohol) <- c("yes", "no", "do_not_drink_heavily")
     ego_alcohol = df_input$alcohol,
+
+    df_input$smoke <- factor(df_input$smoke, levels = c(1, 0, 9))
+    levels(df_input$smoke) <- c("yes", "no", "do_not_smoke")
     ego_smoke = df_input$smoke,
+    
+    df_input$exercise <- factor(df_input$exercise, levels = c(1, 0))
+    levels(df_input$exercise) <- c("yes", "no")
     ego_exercise = df_input$exercise,
+    
+    df_input$diet <- factor(df_input$diet, levels = c(1, 0))
+    levels(df_input$diet) <- c("yes", "no")
     ego_diet = df_input$diet,
 
     # health problems
@@ -100,8 +146,8 @@ build_clean_df <- function(df_input) {
       warning("Unable to compute egoless_max_degree")
       rep(NA_real_, nrow(df_input))
     }),
-    egoless_min_degree = tryCatch({
-      calc_egoless_min_degree_df(df_input)
+    egoless_mean_degree = tryCatch({
+      calc_egoless_mean_degree_df(df_input)
     }, error = function(e) {
       warning("Unable to compute egoless_min_degree")
       rep(NA_real_, nrow(df_input))
