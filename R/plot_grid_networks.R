@@ -13,6 +13,7 @@
 #' (default = ceiling of the square root of the total number of plots to make).
 #'
 #' Uses should subset the list networks fed into function to customize the number of plots.
+#' Function not intended for visualizing more than 25 sociograms at a time.
 #'
 #' @param list_tidygra A list of tidygraph objects.
 #' @param number_cols Number of columns in the grid (default = ceiling of the square root of the total number of plots).

@@ -4,17 +4,15 @@
 \alias{plot_grid_networks}
 \title{Plot a grid of personal network graphs}
 \usage{
-plot_grid_networks(list_tidygra, number_cols = NULL, nets_per_plot = NULL)
+plot_grid_networks(list_tidygra, number_cols = NULL)
 }
 \arguments{
 \item{list_tidygra}{A list of tidygraph objects.}
 
 \item{number_cols}{Number of columns in the grid (default = ceiling of the square root of the total number of plots).}
-
-\item{nets_per_plot}{Number of networks per plot (default = 25 to ensure clarity).}
 }
 \value{
-A combined grid plot of personal networks.
+A combined grid plot of sociograms
 }
 \description{
 Visualizes multiple personal network graphs in a grid format using ggraph. 
@@ -27,11 +25,14 @@ Each individual network graph distinguishes between strong and weak ties and hig
 - **Alters** are represented with grey points.
 
 The function allows customization of the grid:
-- **number_cols**: Specifies the number of columns in the grid (default = ceiling of the square root of the total number of plots to make).
-- **nets_per_plot**: Defines how many networks are displayed per plot (default = 20).
+- **number_cols**: Specifies the number of columns in the grid 
+(default = ceiling of the square root of the total number of plots to make).
+
+Uses should subset the list networks fed into function to customize the number of plots.
+Function not intended for visualizing more than 25 sociograms at a time.
 }
 \examples{
 plot_grid_networks(list_tidygra)
 plot_grid_networks(list_tidygra, number_cols = 4, nets_per_plot = 10)
-plot_grid_networks(list_tidygra[10:25], number_cols = 3, nets_per_plot = 15)
+plot_grid_networks(list_tidygra[10:25], number_cols = 3)
 }
