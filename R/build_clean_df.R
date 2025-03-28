@@ -17,8 +17,7 @@ df_input$edu <- factor(df_input$edu,
   labels = c("some_high_school", "high_school_grad",
           "some_college", "associate_degree", 
           "bachelor_degree", "graduate_degree", 
-          "no_answer")),
-
+          "no_answer"))
 
 df_input$employment <- factor(df_input$employment, 
   levels = c(1, 2, 3, 4, 5, 6, 7, 0),
