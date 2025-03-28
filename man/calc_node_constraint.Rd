@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_node_constraint.R
 \name{calc_node_constraint}
 \alias{calc_node_constraint}
-\title{Calculate Burt's Constraint for a given node in a network}
+\title{Calculate Burt's Constraint for a given node in a weighted undirected egonetwork}
 \usage{
 calc_node_constraint(tidygra, node_index = NULL)
 }
@@ -12,16 +12,48 @@ calc_node_constraint(tidygra, node_index = NULL)
 \item{node_index}{(Optional) The node for which constraint is calculated (default = "ego").}
 }
 \value{
-The constraint value for the specified node.
-        Returns NA if the network is an isolate.
+The constraint value for the specified node. In undirected networks with tie weights 
+e \in \{1, 2\}, Burt’s constraint C_i is bounded between 0 and 1.25. Returns NA if the network is an isolate.
 }
 \description{
-Computes Burt's Constraint measure for a specified node in a tidygraph object.
-Burt's Constraint quantifies how much a node’s connections are concentrated within
+Computes Burt's Constraint measure for a specified node in a tidygraph object, by default,
+the node labeled 'ego'. Constraint quantifies how much a node’s connections are concentrated within
 a closed group, limiting access to diverse information.
 }
+\details{
+For undirected networks, constraint \eqn{C_i} for a given ego \eqn{i}: is calculated as:
+
+\deqn{
+C_i = \sum_{j \neq i} \left(p_{ij} + \sum_{q \neq i,j} p_{iq} p_{qj}\right)^2
+}
+
+Where:
+\itemize{
+  \item \eqn{p_{ij}} is the proportion of ego \eqn{i}'s total tie strength 
+  that connects to alter \eqn{j}. Formally, for an undirected network:
+  \deqn{
+  p_{ij} = \frac{w_{ij}}{\sum_{k \neq i} w_{ik}}
+  }
+  
+  \item \eqn{w_{ij}} represents the weight of the undirected edge between nodes \eqn{i} and \eqn{j}.
+  
+  \item The term \eqn{\sum_{q \neq i,j} p_{iq} p_{qj}} captures indirect redundancy
+  between ego \eqn{i} and alter \eqn{j}, reflecting the proportion of tie strength mediated by other nodes \eqn{q}.
+  
+  \item The expression inside the parentheses is squared to strongly penalize redundant paths.
+}
+
+
+Clarifying the notation for undirected networks:
+\itemize{
+  \item \eqn{i}: focal node ("ego").
+  \item \eqn{j}: any node directly connected to \eqn{i}.
+  \item \eqn{q}: intermediary node connecting \eqn{i} and \eqn{j}.
+  \item \eqn{C_i}: constraint score for node \eqn{i}.
+}
+}
 \examples{
-calc_node_constraint(tidygra, "ego")
+calc_node_constraint(tidygra)
 calc_node_constraint(tidygra, "burt")
 }
 \references{
