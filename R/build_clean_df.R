@@ -12,6 +12,11 @@ build_clean_df = function(df_input) {
 
 #create factor variables here with a try except if the particular variable name is missing
 
+# Check and convert 'edu'
+if (!"edu" %in% names(df_input) || length(df_input$edu) == 0) {
+  warning("Column 'edu' is missing or empty. Creating default NA vector.")
+  df_input$edu <- rep(NA, nrow(df_input))
+}
 df_input$edu <- tryCatch({
   factor(df_input$edu, 
          levels = c(1, 2, 3, 4, 5, 6, 88),
@@ -21,9 +26,14 @@ df_input$edu <- tryCatch({
                     "no_answer"))
 }, error = function(e) {
   warning("Error converting edu: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$edu)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'employment'
+if (!"employment" %in% names(df_input) || length(df_input$employment) == 0) {
+  warning("Column 'employment' is missing or empty. Creating default NA vector.")
+  df_input$employment <- rep(NA, nrow(df_input))
+}
 df_input$employment <- tryCatch({
   factor(df_input$employment, 
          levels = c(1, 2, 3, 4, 5, 6, 7, 0),
@@ -33,9 +43,14 @@ df_input$employment <- tryCatch({
                     "no_answer", "out_of_work_not_looking_for_work"))
 }, error = function(e) {
   warning("Error converting employment: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$employment)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'occupation'
+if (!"occupation" %in% names(df_input) || length(df_input$occupation) == 0) {
+  warning("Column 'occupation' is missing or empty. Creating default NA vector.")
+  df_input$occupation <- rep(NA, nrow(df_input))
+}
 df_input$occupation <- tryCatch({
   factor(df_input$occupation, 
          levels = c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "77"),
@@ -47,9 +62,14 @@ df_input$occupation <- tryCatch({
                     "farming", "military", "other"))
 }, error = function(e) {
   warning("Error converting occupation: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$occupation)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'income'
+if (!"income" %in% names(df_input) || length(df_input$income) == 0) {
+  warning("Column 'income' is missing or empty. Creating default NA vector.")
+  df_input$income <- rep(NA, nrow(df_input))
+}
 df_input$income <- tryCatch({
   factor(df_input$income, 
          levels = c("1", "2", "3", "4", "5"),
@@ -57,61 +77,91 @@ df_input$income <- tryCatch({
                     "170000_to_499000", "more_than_500000"))
 }, error = function(e) {
   warning("Error converting income: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$income)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'live_alone'
+if (!"live_alone" %in% names(df_input) || length(df_input$live_alone) == 0) {
+  warning("Column 'live_alone' is missing or empty. Creating default NA vector.")
+  df_input$live_alone <- rep(NA, nrow(df_input))
+}
 df_input$live_alone <- tryCatch({
   factor(df_input$live_alone, 
          levels = c(0, 1),
          labels = c("no", "yes"))
 }, error = function(e) {
   warning("Error converting live_alone: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$live_alone)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'married'
+if (!"married" %in% names(df_input) || length(df_input$married) == 0) {
+  warning("Column 'married' is missing or empty. Creating default NA vector.")
+  df_input$married <- rep(NA, nrow(df_input))
+}
 df_input$married <- tryCatch({
   factor(df_input$married, 
          levels = c(0, 1),
          labels = c("not_married", "married"))
 }, error = function(e) {
   warning("Error converting married: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$married)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'alcohol'
+if (!"alcohol" %in% names(df_input) || length(df_input$alcohol) == 0) {
+  warning("Column 'alcohol' is missing or empty. Creating default NA vector.")
+  df_input$alcohol <- rep(NA, nrow(df_input))
+}
 df_input$alcohol <- tryCatch({
   factor(df_input$alcohol, 
          levels = c(1, 0, 9),
          labels = c("yes", "no", "does_not_drink_heavily"))
 }, error = function(e) {
   warning("Error converting alcohol: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$alcohol)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'smoke'
+if (!"smoke" %in% names(df_input) || length(df_input$smoke) == 0) {
+  warning("Column 'smoke' is missing or empty. Creating default NA vector.")
+  df_input$smoke <- rep(NA, nrow(df_input))
+}
 df_input$smoke <- tryCatch({
   factor(df_input$smoke, 
          levels = c(1, 0, 9),
          labels = c("yes", "no", "does_not_smoke"))
 }, error = function(e) {
   warning("Error converting smoke: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$smoke)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'exercise'
+if (!"exercise" %in% names(df_input) || length(df_input$exercise) == 0) {
+  warning("Column 'exercise' is missing or empty. Creating default NA vector.")
+  df_input$exercise <- rep(NA, nrow(df_input))
+}
 df_input$exercise <- tryCatch({
   factor(df_input$exercise, 
          levels = c(1, 0),
          labels = c("yes", "no"))
 }, error = function(e) {
   warning("Error converting exercise: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$exercise)))
+  factor(rep(NA, nrow(df_input)))
 })
 
+# Check and convert 'diet'
+if (!"diet" %in% names(df_input) || length(df_input$diet) == 0) {
+  warning("Column 'diet' is missing or empty. Creating default NA vector.")
+  df_input$diet <- rep(NA, nrow(df_input))
+}
 df_input$diet <- tryCatch({
   factor(df_input$diet, 
          levels = c(1, 0),
          labels = c("yes", "no"))
 }, error = function(e) {
   warning("Error converting diet: ", conditionMessage(e))
-  factor(rep(NA, length(df_input$diet)))
+  factor(rep(NA, nrow(df_input)))
 })
 
 #build output df here
