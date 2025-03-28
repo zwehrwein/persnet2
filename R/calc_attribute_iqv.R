@@ -39,27 +39,27 @@ calc_attribute_iqv <- function(persnet_row, attribute = NULL) {
   # calculate IQV using Blau heterophily index and corresponding normalization factor
   if (attribute == 'race') {
     return(
-      calc_blau_alter_heterophily(persnet_row, 'race') / (1 - 1 / 5)
+      round(calc_blau_alter_heterophily(persnet_row, 'race') / (1 - 1 / 5),2)
     )
   }
   if (attribute == 'gender') {
     return(
-      calc_blau_alter_heterophily(persnet_row, 'gender') / (1 - 1 / 2)
+      round(calc_blau_alter_heterophily(persnet_row, 'gender') / (1 - 1 / 2),2)
     )
   }
   if (attribute == 'educ') {
     return(
-      calc_blau_alter_heterophily(persnet_row, 'educ') / (1 - 1 / 4)
+      round(calc_blau_alter_heterophily(persnet_row, 'educ') / (1 - 1 / 4),2)
     )
   }
   if (attribute == 'relationships') {
     return(
-      calc_blau_alter_heterophily(persnet_row, 'relationships') / (1 - 1 / 6)
+      round(calc_blau_alter_heterophily(persnet_row, 'relationships') / (1 - 1 / 6),2)
     )
   }
   if (attribute == 'support') {
     return(
-      calc_blau_alter_heterophily(persnet_row, 'support') / (1 - 1 / 5)
+      round(calc_blau_alter_heterophily(persnet_row, 'support') / (1 - 1 / 5),2)
     )
   }
   # as an alter can be of mulitple `race', `relationships', or 'support', IQV is not defined, but code is included if

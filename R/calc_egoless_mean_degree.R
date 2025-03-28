@@ -28,7 +28,7 @@ calc_egoless_mean_degree <- function(tg_graph) {
     }
     
     # Else calculate mean degree
-    return(mean(igraph::degree(egoless_graph)))
+    return(round(mean(igraph::degree(egoless_graph))),2)
   }, error = function(e) {
     # If an error occurs, return NA
     return(NA)

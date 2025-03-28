@@ -29,10 +29,12 @@ calc_prop_alters_diet <- function(persnet_row) {
   
   # Select diet-related columns
   diet_cols <- persnet_row %>% dplyr::select(name1diet:name15diet)
-  
+
   # Calculate and return the proportion of alters with a good diet
-  return(
-    length(which(diet_cols == 0)) /
+  diet_prop_value <- length(which(diet_cols == 0)) /
     sum(persnet_row %>% dplyr::select(tie1:tie15) != 0, na.rm = TRUE)
+  
+  return(
+    round(diet_prop_value,2)
   )
 }

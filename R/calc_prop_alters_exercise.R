@@ -31,7 +31,7 @@ calc_prop_alters_exercise <- function(persnet_row) {
   
   # Calculate and 1 minus the proportion of alters who exercise regularly
   return(
-    (1 - length(which(exer_cols == 1)) /
-    sum(persnet_row %>% dplyr::select(tie1:tie15) != 0, na.rm = TRUE))
+    round((1 - length(which(exer_cols == 1)) /
+    sum(persnet_row %>% dplyr::select(tie1:tie15) != 0, na.rm = TRUE)),2)
   )
 }
