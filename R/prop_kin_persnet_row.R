@@ -12,6 +12,6 @@
 #' # Assuming persnet_row is a row from your personal network dataframe:
 #' legacy_kin <- legacy_kin_prop_row(persnet_row)
 prop_kin_persnet_row <- function(persnet_row) {
-  return(calc_prop_alters_relationship(persnet_row, "spouse") +
-         calc_prop_alters_relationship(persnet_row, "family"))
+  return(round(calc_prop_alters_relationship(persnet_row, "spouse") +
+         calc_prop_alters_relationship(persnet_row, "family")),2)
 }

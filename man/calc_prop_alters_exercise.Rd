@@ -2,7 +2,7 @@
 % Please edit documentation in R/calc_prop_alters_exercise.R
 \name{calc_prop_alters_exercise}
 \alias{calc_prop_alters_exercise}
-\title{Calculate the proportion of alters who exercise regularly}
+\title{Calculate the proportion of alters who do not exercise regularly}
 \usage{
 calc_prop_alters_exercise(persnet_row)
 }
@@ -10,8 +10,8 @@ calc_prop_alters_exercise(persnet_row)
 \item{persnet_row}{A single row of a personal network data frame.}
 }
 \value{
-The proportion of alters who exercise regularly.
+The proportion of alters who do not exercise regularly.
 }
 \description{
-Computes the proportion of alters who exercise regularly.
+Computes the proportion of alters who do not exercise regularly.
 }

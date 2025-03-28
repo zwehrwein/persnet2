@@ -17,6 +17,8 @@ calc_egoless_density <- function(tg_graph) {
   # Outputs:  
   #   Density of the network without the ego node
   ##########
-  
-  return(igraph::edge_density(remove_ego_from_igraph(tg_graph)))
+  if (igraph::vcount(remove_ego_from_igraph(tg_graph)) < 2) {
+    return(NA_real_)
+  }
+  return(round(igraph::edge_density(remove_ego_from_igraph(tg_graph))),2)
 }

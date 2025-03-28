@@ -106,28 +106,28 @@ ego_smoke = df_input$smoke,
 
 ego_exercise = df_input$exercise,
 
-ego_diet = df_input$diet,
+ego_healty_diet = df_input$diet,
 
 # health problems
-health1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
+health_problems1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
 extract_health_problems(df_input[.x, , drop = FALSE], health_position = 1)
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to find first listed health problem", .x))
 NA_character_
 })),
-health2 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
+health_problems2 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
 extract_health_problems(df_input[.x, , drop = FALSE], health_position = 2)
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to find second listed health problem", .x))
 NA_character_
 })),
-health3 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
+health_problems3 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
 extract_health_problems(df_input[.x, , drop = FALSE], health_position = 3)
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to find third listed health problem", .x))
 NA_character_
 })),
-health4 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
+health_problems4 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
 extract_health_problems(df_input[.x, , drop = FALSE], health_position = 4)
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to find fouth listed health problem", .x))
@@ -135,37 +135,37 @@ NA_character_
 })),
 
 # network structure
-alter_count = tryCatch({
+network_size = tryCatch({
 calc_total_alters_df(df_input)
 }, error = function(e) {
 warning("Unable to compute alter_count")
 rep(NA_real_, nrow(df_input))
 }),
-egoless_density = tryCatch({
+density = tryCatch({
 calc_egoless_density_df(df_input)
 }, error = function(e) {
 warning("Unable to compute egoless_density")
 rep(NA_real_, nrow(df_input))
 }),
-ego_constraint = tryCatch({
+constraint = tryCatch({
 calc_ego_constraint_df(df_input)
 }, error = function(e) {
 warning("Unable to compute ego_constraint")
 rep(NA_real_, nrow(df_input))
 }),
-ego_ens = tryCatch({
+effsize = tryCatch({
 calc_ego_ens_df(df_input)
 }, error = function(e) {
 warning("Unable to compute ego_ens")
 rep(NA_real_, nrow(df_input))
 }),
-egoless_max_degree = tryCatch({
+max_degree = tryCatch({
 calc_egoless_max_degree_df(df_input)
 }, error = function(e) {
 warning("Unable to compute egoless_max_degree")
 rep(NA_real_, nrow(df_input))
 }),
-egoless_mean_degree = tryCatch({
+mean_degree = tryCatch({
 calc_egoless_mean_degree_df(df_input)
 }, error = function(e) {
 warning("Unable to compute egoless_min_degree")
@@ -179,13 +179,13 @@ prop_kin_persnet_row(df_input[.x, , drop = FALSE])
 warning(sprintf("Row %s: Unable to compute kin_prop", .x))
 NA_real_
 })),
-sd_age_alters = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
+age_sd = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
 sd_age_alters_row(df_input[.x, , drop = FALSE])
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to compute sd_age_alters", .x))
 NA_real_
 })),
-iqv_gender = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
+iqv_sex = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
 calc_attribute_iqv(df_input[.x, , drop = FALSE], attribute = "gender")
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to compute iqv_gender", .x))
@@ -227,25 +227,25 @@ prop_heavy_drinkers_row(df_input[.x, , drop = FALSE])
 warning(sprintf("Row %s: Unable to compute heavy_drinkers_prop", .x))
 NA_real_
 })),
-alters_smoke_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
+smoking_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
 calc_prop_alters_smoke(df_input[.x, , drop = FALSE])
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to compute alters_smoke_prop", .x))
 NA_real_
 })),
-alters_exercise_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
+no_exercise_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
 calc_prop_alters_exercise(df_input[.x, , drop = FALSE])
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to compute alters_exercise_prop", .x))
 NA_real_
 })),
-alters_diet_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
+bad_diet_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
 calc_prop_alters_diet(df_input[.x, , drop = FALSE])
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to compute alters_diet_prop", .x))
 NA_real_
 })),
-alter_health_problems = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
+health_prob_prop = purrr::map_dbl(1:nrow(df_input), ~ tryCatch({
 alter_health_problems_row(df_input[.x, , drop = FALSE])
 }, error = function(e) {
 warning(sprintf("Row %s: Unable to compute alter_health_problems", .x))
