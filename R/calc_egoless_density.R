@@ -20,6 +20,6 @@ calc_egoless_density <- function(tg_graph) {
   if (igraph::vcount(remove_ego_from_igraph(tg_graph)) < 2) {
     return(NA_real_)
   }
-  egoless_density_value = igraph::edge_density(remove_ego_from_igraph(tg_graph))
+  egoless_density_value <- igraph::edge_density(remove_ego_from_igraph(tg_graph))
   return(round(egoless_density_value,2))
 }
