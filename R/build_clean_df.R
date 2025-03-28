@@ -211,7 +211,7 @@ df_clean = tibble::tibble(
   
   ego_exercise = if ("exercise" %in% names(df_input)) df_input$exercise else rep(NA, nrow(df_input)),
   
-  ego_healty_diet = if ("diet" %in% names(df_input)) df_input$diet else rep(NA, nrow(df_input))
+  ego_healty_diet = if ("diet" %in% names(df_input)) df_input$diet else rep(NA, nrow(df_input)),
 
 # health problems
 health_problems1 = purrr::map_chr(1:nrow(df_input), ~ tryCatch({
