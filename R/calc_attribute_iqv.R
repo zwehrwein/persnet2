@@ -6,7 +6,10 @@
 #' @param persnet_row A single row of a personal network data frame.
 #' @param attribute One of `gender` or `educ`.
 #'
-#' @return The IQV value for the specified attribute.
+#' @references
+#' Agresti, A., & Agresti, B. F. (1978). Statistical analysis of qualitative variation. Sociological Methodology
+#'
+#' @return The IQV value for the specified attribute. Range from 0 (complete homogeneity; all ties are in one category) to 1 (maximum diversity, all ties are in separate categories).
 #' @export
 calc_attribute_iqv <- function(persnet_row, attribute = NULL) {
   ##########

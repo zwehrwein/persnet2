@@ -12,9 +12,12 @@ calc_attribute_iqv(persnet_row, attribute = NULL)
 \item{attribute}{One of `gender` or `educ`.}
 }
 \value{
-The IQV value for the specified attribute.
+The IQV value for the specified attribute. Range from 0 (complete homogeneity; all ties are in one category) to 1 (maximum diversity, all ties are in separate categories).
 }
 \description{
 Computes the Index of Qualitative Variation (IQV) for a specified alter attribute.
 The IQV measures diversity and variation within a personal network.
+}
+\references{
+Agresti, A., & Agresti, B. F. (1978). Statistical analysis of qualitative variation. Sociological Methodology
 }
