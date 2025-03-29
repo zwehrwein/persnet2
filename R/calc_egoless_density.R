@@ -15,11 +15,8 @@ calc_egoless_density <- function(tg_graph) {
   # Inputs:  
   #   tg_graph = A tidygraph object representing a personal network
   # Outputs:  
-  #   Density of the network without the ego node
+  #   Density of the network without the ego node (rounded to 2 decimal places)
   ##########
-  if (igraph::vcount(remove_ego_from_igraph(tg_graph)) < 2) {
-    return(NA_real_)
-  } else{
-    return(round(igraph::edge_density(remove_ego_from_igraph(tg_graph))),2)
-  }
+  
+  return(round(igraph::edge_density(remove_ego_from_igraph(tg_graph)), 2))
 }
