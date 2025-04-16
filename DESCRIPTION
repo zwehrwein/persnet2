@@ -1,7 +1,7 @@
 Package: persnet2
 Type: Package
 Title: persnet2
-Version: 2.5.0
+Version: 2.5.1
 Authors@R: c(person("Zachary Wehrwein", email = "zwehrwein@bwh.harvard.edu", role = c("aut", "cre")))
 Maintainer: The package maintainer <zwehrwein@bwh.harvard.edu>
 Description: A package for analyzing patient ego-networks from the Personal Network Survey for Clinical Research survey instrument, including visualization and structural calculations.
