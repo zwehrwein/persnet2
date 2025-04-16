@@ -17,7 +17,3 @@ The function searches for alcohol-related alter columns (e.g., "name1alcohol" to
 if found, calculates the ratio of alters with heavy drinking (indicated by values of 0 or 1)
 to the total number of alters (as determined by tie columns). The result is rounded to two decimal places.
 }
-\examples{
-# Assuming persnet_row is a row from your persnet dataframe:
-heavy_drinkers <- heavy_drinkers_row(persnet_row)
-}

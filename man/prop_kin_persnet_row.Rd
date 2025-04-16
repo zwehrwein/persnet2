@@ -16,7 +16,3 @@ A numeric value representing the legacy kin proportion for the given row.
 Computes the legacy kin proportion for a given personal network row by summing the 
 proportions of alters classified as "spouse" and "family".
 }
-\examples{
-# Assuming persnet_row is a row from your personal network dataframe:
-legacy_kin <- legacy_kin_prop_row(persnet_row)
-}

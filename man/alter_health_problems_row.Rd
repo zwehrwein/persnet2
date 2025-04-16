@@ -17,7 +17,3 @@ The function identifies alter health problem-related columns (excluding those fo
 and calculates the ratio of the sum of these columns to the total number of alters (based on tie columns).
 The result is rounded to two decimal places.
 }
-\examples{
-# Assuming persnet_row is a row from your persnet dataframe:
-health_problem_proportion <- alter_health_problems_row(persnet_row)
-}

@@ -10,9 +10,9 @@ proportion_alters_provide_support(persnet_row)
 \item{persnet_row}{A single row of a persnet dataframe.}
 }
 \value{
-A numeric value representing the proportion of alters living more than 15 miles away.
+A numeric value representing the proportion of alters who "support ego msot often"
 }
 \description{
-Computes the proportion of alters who live more than 15 miles away from the ego in a persnet dataframe row.
-This is done by summing the proportions of alters categorized as "16_50miles" and "more50miles", and rounding the result to two decimal places.
+Proportion of alters ego answered yes to "which person or persons support you most often?
+You can choose more than one person."
 }

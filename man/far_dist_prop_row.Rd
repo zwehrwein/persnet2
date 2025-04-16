@@ -16,7 +16,3 @@ A numeric value representing the proportion of alters living more than 15 miles 
 Computes the proportion of alters who live more than 15 miles away from the ego in a persnet dataframe row.
 This is done by summing the proportions of alters categorized as "16_50miles" and "more50miles", and rounding the result to two decimal places.
 }
-\examples{
-# Assuming persnet_row is a row from your persnet dataframe:
-far_distance_proportion <- far_dist_prop_row(persnet_row)
-}
