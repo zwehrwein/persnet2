@@ -18,7 +18,7 @@
 #' @import ggplot2 
 #' @export
 
-plot_single_network <- function(tidygra) {
+plot_detail_single_network <- function(tidygra) {
   ##########
   # Function: Plots a personal network graph using ggraph, distinguishing 
   #           between strong and weak ties and highlighting the ego node.
