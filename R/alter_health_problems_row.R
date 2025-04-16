@@ -9,9 +9,7 @@
 #' @return A numeric value representing the proportion of alters with health problems.
 #' @export
 #'
-#' @examples
-#' # Assuming persnet_row is a row from your persnet dataframe:
-#' health_problem_proportion <- alter_health_problems_row(persnet_row)
+
 alter_health_problems_row <- function(persnet_row) {
   alter_health_cols_string <- grep("^name\\d+health___\\d+$", colnames(persnet_row), value = TRUE)
   if (length(alter_health_cols_string) == 0) {

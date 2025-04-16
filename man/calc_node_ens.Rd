@@ -16,8 +16,9 @@ The Effective Network Size (ENS), a numeric value, for the specified node.
         Returns NA if the network is an isolate.
 }
 \description{
-Computes the Effective Network Size (ENS) for a specified node in a tidygraph object,
-considering tie strengths. ENS is a measure of structural holes in a network.
+Effective Network Size measures the number of non-redundant ties an ego node has. n.b.
+This function treats missing weight values as equal to 1 and defines redundant tie in
+terms of stong ties, not as a proportion of all ties as these networks are weighted.
 ENS is calculated as:
 \deqn{
   ENS_i = \sum_{j \neq i} \left[ 1 - \sum_{q \neq i,j} (p_{iq} \cdot m_{jq}) \right]

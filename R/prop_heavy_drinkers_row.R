@@ -9,9 +9,7 @@
 #' @return A numeric value representing the proportion of heavy drinkers among the alters.
 #' @export
 #'
-#' @examples
-#' # Assuming persnet_row is a row from your persnet dataframe:
-#' heavy_drinkers <- heavy_drinkers_row(persnet_row)
+
 prop_heavy_drinkers_row <- function(persnet_row) {
   alcohol_cols_string <- grep("^name\\d+alcohol$", colnames(persnet_row), value = TRUE)
   if (length(alcohol_cols_string) == 0) {
