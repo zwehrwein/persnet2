@@ -12,8 +12,8 @@ calc_node_constraint(tidygra, node_index = NULL)
 \item{node_index}{(Optional) The node for which constraint is calculated (default = "ego").}
 }
 \value{
-The constraint value for the specified node. In undirected networks with tie weights 
-e \in \{1, 2\}, Burt’s constraint C_i is bounded between 0 and 1.25. Returns NA if the network is an isolate.
+The constraint value for the specified node. In undirected networks with ties weighted
+either 1 (weak) or 2 (strong), Burt’s constraint C_i is bounded between 0 and 1.25. Returns NA if the network is an isolate.
 }
 \description{
 Computes Burt's Constraint measure for a specified node in a tidygraph object, by default,
