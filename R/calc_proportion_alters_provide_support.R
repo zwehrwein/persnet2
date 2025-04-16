@@ -5,7 +5,7 @@
 #'
 #' @param persnet_row A single row of a persnet dataframe.
 #'
-#' @return A numeric value representing the proportion of alters who "support ego msot often"
+#' @return A numeric value representing the proportion of alters who "support ego most often"
 #' @export
 #'
 proportion_alters_provide_support <- function(persnet_row){
